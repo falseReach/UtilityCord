@@ -53,7 +53,7 @@ class autoReplier:
                 receivedEvent = json.loads(self.ws.recv())
                 
                 #Checks if Event received is a message, a "DIRECT" message, and the author is not client. 
-                if (receivedEvent['t'] == "MESSAGE_CREATE") and ("members" not in receivedEvent['d']) and (self.id != receivedEvent['d']['author']['id']):
+                if (receivedEvent['t'] == "MESSAGE_CREATE") and ("guild_id" not in receivedEvent['d']) and (self.id != receivedEvent['d']['author']['id']):
                     self._reply(receivedEvent['d']["channel_id"], self.message)
 
                 print(receivedEvent)    
